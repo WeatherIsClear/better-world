@@ -1,4 +1,4 @@
-package com.weather.betterworld.account;
+package com.weather.betterworld.domain.account;
 
 public enum AccountStatus {
     REGISTRATION, RELEASE
