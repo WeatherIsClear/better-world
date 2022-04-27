@@ -24,10 +24,10 @@ public class OrganizationService {
         Organization savedOrganization = organizationRepository.save(organization);
         log.debug("Organization registration={}", savedOrganization.getId());
         
-        receiveAccountRegistration(request, savedOrganization);
+        receiveAccountRegistration(savedOrganization, request);
     }
 
-    private void receiveAccountRegistration(OrganizationRegistrationRequest request, Organization savedOrganization) {
+    private void receiveAccountRegistration(Organization savedOrganization, OrganizationRegistrationRequest request) {
         ReceiveAccount receiveAccount = ReceiveAccount.of(savedOrganization, request);
         ReceiveAccount savedReceiveAccountRepository = receiveAccountRepository.save(receiveAccount);
         log.debug("ReceiveAccount registration={}", savedReceiveAccountRepository.getId());
