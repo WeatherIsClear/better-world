@@ -1,4 +1,4 @@
-package com.weather.betterworld.domain.member;
+package com.weather.betterworld.domains.member;
 
 public enum MemberStatus {
 

@@ -1,4 +1,4 @@
-package com.weather.betterworld.domain.application;
+package com.weather.betterworld.domains.application;
 
 public enum DonationType {
 

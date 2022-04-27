@@ -1,7 +1,7 @@
-package com.weather.betterworld.domain.donation;
+package com.weather.betterworld.domains.donation;
 
-import com.weather.betterworld.domain.member.Member;
-import com.weather.betterworld.domain.organization.Organization;
+import com.weather.betterworld.domains.member.Member;
+import com.weather.betterworld.domains.organization.domain.Organization;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -19,15 +19,15 @@ public class Donation {
 
     @Id
     @GeneratedValue
-    @Column("donation_id")
+    @Column(name = "donation_id")
     private Long id;
 
     @ManyToOne(fetch = LAZY)
-    @JoinColumn("organization_id")
+    @JoinColumn(name = "organization_id")
     private Organization organization;
 
     @ManyToOne(fetch = LAZY)
-    @JoinColumn("member_id")
+    @JoinColumn(name = "member_id")
     private Member member;
 
     private BigDecimal amount;

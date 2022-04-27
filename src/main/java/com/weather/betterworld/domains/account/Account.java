@@ -1,6 +1,6 @@
-package com.weather.betterworld.domain.account;
+package com.weather.betterworld.domains.account;
 
-import com.weather.betterworld.domain.member.Member;
+import com.weather.betterworld.domains.member.Member;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -16,11 +16,11 @@ public class Account {
 
     @Id
     @GeneratedValue
-    @Column("account_id")
+    @Column(name = "account_id")
     private Long id;
 
     @ManyToOne(fetch = LAZY)
-    @JoinColumn("member_id")
+    @JoinColumn(name = "member_id")
     private Member member;
 
     private String billKey;

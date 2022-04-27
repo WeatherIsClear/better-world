@@ -1,8 +1,8 @@
-package com.weather.betterworld.domain.donationschedule;
+package com.weather.betterworld.domains.donationschedule;
 
-import com.weather.betterworld.domain.account.Account;
-import com.weather.betterworld.domain.member.Member;
-import com.weather.betterworld.domain.organization.Organization;
+import com.weather.betterworld.domains.account.Account;
+import com.weather.betterworld.domains.member.Member;
+import com.weather.betterworld.domains.organization.domain.Organization;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -18,18 +18,18 @@ public class DonationSchedule {
 
     @Id
     @GeneratedValue
-    @Column("donation_schedule_id")
+    @Column(name = "donation_schedule_id")
     private Long id;
 
     @ManyToOne(fetch = LAZY)
-    @JoinColumn("member_id")
+    @JoinColumn(name = "member_id")
     private Member member;
 
     @ManyToOne(fetch = LAZY)
-    @JoinColumn("account_id")
+    @JoinColumn(name = "account_id")
     private Account account;
 
     @ManyToOne(fetch = LAZY)
-    @JoinColumn("organization_id")
+    @JoinColumn(name = "organization_id")
     private Organization organization;
 }

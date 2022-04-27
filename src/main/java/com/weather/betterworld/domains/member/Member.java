@@ -1,4 +1,4 @@
-package com.weather.betterworld.domain.member;
+package com.weather.betterworld.domains.member;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -17,7 +17,7 @@ public class Member {
 
     @Id
     @GeneratedValue
-    @Column("member_id")
+    @Column(name = "member_id")
     private Long id;
 
     private String name;

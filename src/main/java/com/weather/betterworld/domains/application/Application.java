@@ -1,8 +1,7 @@
-package com.weather.betterworld.domain.application;
+package com.weather.betterworld.domains.application;
 
-import com.weather.betterworld.domain.donation.Donation;
-import com.weather.betterworld.domain.donationschedule.DonationSchedule;
-import lombok.AccessLevel;
+import com.weather.betterworld.domains.donation.Donation;
+import com.weather.betterworld.domains.donationschedule.DonationSchedule;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -21,15 +20,15 @@ public class Application {
 
     @Id
     @GeneratedValue
-    @Column("application_id")
+    @Column(name = "application_id")
     private Long id;
 
     @OneToOne(fetch = LAZY)
-    @JoinColumn("donation_id")
+    @JoinColumn(name = "donation_id")
     private Donation donation;
 
     @OneToOne(fetch = LAZY)
-    @JoinColumn("donation_schedule_id")
+    @JoinColumn(name = "donation_schedule_id")
     private DonationSchedule donationSchedule;
 
     private BigDecimal amount;
