@@ -1,7 +1,7 @@
 package com.weather.betterworld.domains.organization.service;
 
 import com.weather.betterworld.domains.organization.domain.Organization;
-import com.weather.betterworld.domains.organization.dto.OrganizationRegistrationRequest;
+import com.weather.betterworld.domains.organization.request.OrganizationRegistrationRequest;
 import com.weather.betterworld.domains.organization.repository.OrganizationRepository;
 import com.weather.betterworld.domains.receiveaccount.domain.ReceiveAccount;
 import com.weather.betterworld.domains.receiveaccount.repository.ReceiveAccountRepository;
@@ -23,7 +23,8 @@ class OrganizationServiceTest {
     ReceiveAccountRepository receiveAccountRepository;
 
     @Test
-    void registration() {
+    void organizationRegistration() {
+
         OrganizationRegistrationRequest request = new OrganizationRegistrationRequest();
         Organization organization = Organization.of(request);
         given(organizationRepository.save(organization)).willReturn(organization);
@@ -35,6 +36,7 @@ class OrganizationServiceTest {
     }
 
     private void receiveAccountRegistration(Organization savedOrganization, OrganizationRegistrationRequest request) {
+
         ReceiveAccount receiveAccount = ReceiveAccount.of(savedOrganization, request);
         given(receiveAccountRepository.save(receiveAccount)).willReturn(receiveAccount);
 
@@ -42,5 +44,4 @@ class OrganizationServiceTest {
 
         assertThat(receiveAccount).isEqualTo(savedReceiveAccount);
     }
-
 }

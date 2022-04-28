@@ -1,4 +1,4 @@
-package com.weather.betterworld.domains.organization.dto;
+package com.weather.betterworld.domains.organization.request;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;

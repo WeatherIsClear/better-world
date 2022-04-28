@@ -1,4 +1,4 @@
-package com.weather.betterworld.domains.member;
+package com.weather.betterworld.domains.member.domain;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;

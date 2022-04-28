@@ -1,6 +1,6 @@
 package com.weather.betterworld.domains.organization.domain;
 
-import com.weather.betterworld.domains.organization.dto.OrganizationRegistrationRequest;
+import com.weather.betterworld.domains.organization.request.OrganizationRegistrationRequest;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

@@ -1,7 +1,7 @@
 package com.weather.betterworld.domains.organization.service;
 
 import com.weather.betterworld.domains.organization.domain.Organization;
-import com.weather.betterworld.domains.organization.dto.OrganizationRegistrationRequest;
+import com.weather.betterworld.domains.organization.request.OrganizationRegistrationRequest;
 import com.weather.betterworld.domains.organization.repository.OrganizationRepository;
 import com.weather.betterworld.domains.receiveaccount.domain.ReceiveAccount;
 import com.weather.betterworld.domains.receiveaccount.repository.ReceiveAccountRepository;
@@ -17,9 +17,10 @@ import org.springframework.transaction.annotation.Transactional;
 public class OrganizationService {
 
     private final OrganizationRepository organizationRepository;
+
     private final ReceiveAccountRepository receiveAccountRepository;
 
-    public void registration(OrganizationRegistrationRequest request) {
+    public void organizationRegistration(OrganizationRegistrationRequest request) {
         Organization organization = Organization.of(request);
         Organization savedOrganization = organizationRepository.save(organization);
         log.debug("Organization registration={}", savedOrganization.getId());

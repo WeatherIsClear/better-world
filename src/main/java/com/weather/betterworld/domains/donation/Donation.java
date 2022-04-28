@@ -1,6 +1,6 @@
 package com.weather.betterworld.domains.donation;
 
-import com.weather.betterworld.domains.member.Member;
+import com.weather.betterworld.domains.member.domain.Member;
 import com.weather.betterworld.domains.organization.domain.Organization;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
