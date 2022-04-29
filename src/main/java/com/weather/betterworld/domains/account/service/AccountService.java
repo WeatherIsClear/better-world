@@ -29,21 +29,23 @@ public class AccountService {
 
         AccountValidationApiResponse apiResponse = mockBank.accountValidation(request);
 
-        registration(request, apiResponse);
-    }
-
-    private void registration(AccountRegistrationRequest request, AccountValidationApiResponse apiResponse) {
         if (apiResponse.isSuccess()) {
-            Member member = memberRepository.findById(request.getMemberId())
-                    .orElseThrow(() -> new IllegalStateException("존재하지 않는 회원입니다."));
 
-            previousAccountRelease();
+            registration(request, apiResponse);
 
-            Account savedAccount = accountRepository.save(Account.of(member, apiResponse));
-            log.debug("Account SAVE={}", savedAccount.getId());
         } else {
             throw new IllegalStateException("계좌 등록에 실패하였습니다.");
         }
+    }
+
+    private void registration(AccountRegistrationRequest request, AccountValidationApiResponse apiResponse) {
+        Member member = memberRepository.findById(request.getMemberId())
+                .orElseThrow(() -> new IllegalStateException("존재하지 않는 회원입니다."));
+
+        previousAccountRelease();
+
+        Account savedAccount = accountRepository.save(Account.of(member, apiResponse));
+        log.debug("Account SAVE={}", savedAccount.getId());
     }
 
     private void previousAccountRelease() {
