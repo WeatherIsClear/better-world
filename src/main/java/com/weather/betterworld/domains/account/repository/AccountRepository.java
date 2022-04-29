@@ -8,5 +8,5 @@ import java.util.Optional;
 
 public interface AccountRepository extends JpaRepository<Account, Long> {
 
-    Optional<Account> findByStatus(AccountStatus status);
+    Optional<Account> findByIdAndStatus(Long memberId, AccountStatus status);
 }

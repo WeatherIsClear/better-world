@@ -15,6 +15,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Optional;
 
+import static com.weather.betterworld.domains.account.domain.AccountStatus.*;
+
 @Slf4j
 @Service
 @Transactional
@@ -42,14 +44,14 @@ public class AccountService {
         Member member = memberRepository.findById(request.getMemberId())
                 .orElseThrow(() -> new IllegalStateException("존재하지 않는 회원입니다."));
 
-        previousAccountRelease();
+        previousAccountRelease(request);
 
         Account savedAccount = accountRepository.save(Account.of(member, apiResponse));
         log.debug("Account SAVE={}", savedAccount.getId());
     }
 
-    private void previousAccountRelease() {
-        Optional<Account> findOptionalAccount = accountRepository.findByStatus(AccountStatus.REGISTRATION);
+    private void previousAccountRelease(AccountRegistrationRequest request) {
+        Optional<Account> findOptionalAccount = accountRepository.findByIdAndStatus(request.getMemberId(), REGISTRATION);
         findOptionalAccount.ifPresent(Account::accountRelease);
     }
 }
