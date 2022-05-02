@@ -24,18 +24,21 @@ public class ApplicationService {
 
     private final MockBank mockBank;
     private final AccountRepository accountRepository;
+    private final ApplicationRepository applicationRepository;
     private final ReceiveAccountRepository receiveAccountRepository;
 
     public void temporaryApplication(TemporaryApplicationRequest request) {
 
-        Account account = validationAccount(request);
+        Account account = validAccount(request);
 
         ReceiveAccount receiveAccount = getReceiveAccount(request);
 
         mockBank.donate(new DonateApiRequest(account.getBillKey(), request.getAmount(), receiveAccount));
+
+        applicationRepository.save(Application.of(request));
     }
 
-    private Account validationAccount(TemporaryApplicationRequest request) {
+    private Account validAccount(TemporaryApplicationRequest request) {
         return accountRepository.findByMemberIdAndAccountNumber(request.getMemberId(), request.getAccountNumber())
                 .orElseThrow(() -> new IllegalStateException("등록되지 않은 계좌입니다."));
     }
