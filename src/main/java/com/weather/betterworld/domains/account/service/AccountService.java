@@ -1,9 +1,8 @@
 package com.weather.betterworld.domains.account.service;
 
 import com.weather.betterworld.api.MockBank;
-import com.weather.betterworld.api.account.AccountValidationApiResponse;
+import com.weather.betterworld.api.response.AccountValidationApiResponse;
 import com.weather.betterworld.domains.account.domain.Account;
-import com.weather.betterworld.domains.account.domain.AccountStatus;
 import com.weather.betterworld.domains.account.repository.AccountRepository;
 import com.weather.betterworld.domains.account.request.AccountRegistrationRequest;
 import com.weather.betterworld.domains.member.domain.Member;
@@ -44,14 +43,14 @@ public class AccountService {
         Member member = memberRepository.findById(request.getMemberId())
                 .orElseThrow(() -> new IllegalStateException("존재하지 않는 회원입니다."));
 
-        previousAccountRelease(request);
+        previousAccountRelease(member);
 
         Account savedAccount = accountRepository.save(Account.of(member, apiResponse));
         log.debug("Account SAVE={}", savedAccount.getId());
     }
 
-    private void previousAccountRelease(AccountRegistrationRequest request) {
-        Optional<Account> findOptionalAccount = accountRepository.findByIdAndStatus(request.getMemberId(), REGISTRATION);
+    private void previousAccountRelease(Member member) {
+        Optional<Account> findOptionalAccount = accountRepository.findByMemberAndStatus(member, REGISTRATION);
         findOptionalAccount.ifPresent(Account::accountRelease);
     }
 }

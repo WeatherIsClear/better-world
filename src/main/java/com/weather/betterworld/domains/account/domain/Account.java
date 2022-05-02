@@ -1,6 +1,6 @@
 package com.weather.betterworld.domains.account.domain;
 
-import com.weather.betterworld.api.account.AccountValidationApiResponse;
+import com.weather.betterworld.api.response.AccountValidationApiResponse;
 import com.weather.betterworld.domains.member.domain.Member;
 import lombok.Builder;
 import lombok.Getter;

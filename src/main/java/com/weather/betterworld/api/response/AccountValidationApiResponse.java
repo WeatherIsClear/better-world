@@ -1,4 +1,4 @@
-package com.weather.betterworld.api.account;
+package com.weather.betterworld.api.response;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
