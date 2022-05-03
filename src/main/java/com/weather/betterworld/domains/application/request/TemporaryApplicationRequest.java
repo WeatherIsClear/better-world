@@ -9,8 +9,6 @@ import java.math.BigDecimal;
 @NoArgsConstructor
 public class TemporaryApplicationRequest {
 
-    private Long memberId;
-
     private Long organizationId;
 
     private String organizationName;

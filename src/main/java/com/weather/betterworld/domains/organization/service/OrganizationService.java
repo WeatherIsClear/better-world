@@ -17,20 +17,23 @@ import org.springframework.transaction.annotation.Transactional;
 public class OrganizationService {
 
     private final OrganizationRepository organizationRepository;
-
     private final ReceiveAccountRepository receiveAccountRepository;
 
     public void organizationRegistration(OrganizationRegistrationRequest request) {
+
         Organization organization = Organization.of(request);
         Organization savedOrganization = organizationRepository.save(organization);
+
         log.debug("Organization registration={}", savedOrganization.getId());
         
         receiveAccountRegistration(savedOrganization, request);
     }
 
     private void receiveAccountRegistration(Organization savedOrganization, OrganizationRegistrationRequest request) {
+
         ReceiveAccount receiveAccount = ReceiveAccount.of(savedOrganization, request);
         ReceiveAccount savedReceiveAccountRepository = receiveAccountRepository.save(receiveAccount);
+
         log.debug("ReceiveAccount registration={}", savedReceiveAccountRepository.getId());
     }
 }

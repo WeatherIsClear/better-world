@@ -46,11 +46,10 @@ public class AccountService {
         previousAccountRelease(member);
 
         Account savedAccount = accountRepository.save(Account.of(member, apiResponse));
-        log.debug("Account SAVE={}", savedAccount.getId());
     }
 
     private void previousAccountRelease(Member member) {
-        Optional<Account> findOptionalAccount = accountRepository.findByMemberAndStatus(member, REGISTRATION);
-        findOptionalAccount.ifPresent(Account::accountRelease);
+        Optional<Account> currentAccount = accountRepository.findByMemberAndStatus(member, REGISTRATION);
+        currentAccount.ifPresent(Account::accountRelease);
     }
 }
