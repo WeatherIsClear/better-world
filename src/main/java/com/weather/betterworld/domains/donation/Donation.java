@@ -2,6 +2,7 @@ package com.weather.betterworld.domains.donation;
 
 import com.weather.betterworld.domains.member.domain.Member;
 import com.weather.betterworld.domains.organization.domain.Organization;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -31,5 +32,20 @@ public class Donation {
     private Member member;
 
     private BigDecimal amount;
+
+    @Builder
+    private Donation(Organization organization, Member member, BigDecimal amount) {
+        this.organization = organization;
+        this.member = member;
+        this.amount = amount;
+    }
+
+    public static Donation of(Organization organization, Member member, BigDecimal amount) {
+        return Donation.builder()
+                .organization(organization)
+                .member(member)
+                .amount(amount)
+                .build();
+    }
 
 }

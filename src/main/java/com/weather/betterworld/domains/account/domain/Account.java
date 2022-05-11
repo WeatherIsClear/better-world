@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
+import static com.weather.betterworld.domains.account.domain.AccountStatus.*;
 import static javax.persistence.FetchType.*;
 import static lombok.AccessLevel.*;
 
@@ -44,11 +45,11 @@ public class Account {
                 .member(member)
                 .accountNumber(apiResponse.getAccountNumber())
                 .billKey(apiResponse.getBillKey())
-                .status(AccountStatus.REGISTRATION)
+                .status(REGISTRATION)
                 .build();
     }
 
     public void accountRelease() {
-        this.status = AccountStatus.RELEASE;
+        this.status = RELEASE;
     }
 }
